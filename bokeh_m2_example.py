@@ -33,13 +33,15 @@ source = ColumnDataSource(data=dict(x0=x,
                                     y0=y, 
                                     x1=color, 
                                     y1=mag,
+                                    ra=data['RA'],
+                                    dec=data['DEC'],
                                     coadd_object_id=data['COADD_OBJECT_ID']))
 
 # There is a little bit of trickery here to a create custom hover tool on both panels
-hover_left = HoverTool(tooltips=[("(RA,DEC)", "(@x0, @y0)"),
+hover_left = HoverTool(tooltips=[("(RA,DEC)", "(@ra, @dec)"),
                                  ("(g-r,g)", "(@x1, @y1)"),
                                  ("coadd_object_id", "@coadd_object_id")])
-hover_right = HoverTool(tooltips=[("(RA,DEC)", "(@x0, @y0)"),
+hover_right = HoverTool(tooltips=[("(RA,DEC)", "(@ra, @dec)"),
                                   ("(g-r,g)", "(@x1, @y1)"),
                                   ("coadd_object_id", "@coadd_object_id")])
 TOOLS = "box_zoom,box_select,lasso_select,reset,help"
